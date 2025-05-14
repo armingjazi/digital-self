@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv
+.vscode/
+.idea/
+temp.wav
+interview_data.jsonl
+question_history.jsonl

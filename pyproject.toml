@@ -1,0 +1,5 @@
+[project]
+name = "digital-self-cli"
+version = "0.1.0"
+description = "CLI tool to build a digital version of yourself"
+requires-python = ">=3.11,<3.12"
