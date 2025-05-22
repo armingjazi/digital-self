@@ -1,5 +1,6 @@
 from TTS.api import TTS
 
+
 # Load default English model (local-only)
 tts = TTS(model_name="tts_models/en/ljspeech/tacotron2-DDC", progress_bar=False)
 

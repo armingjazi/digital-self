@@ -4,14 +4,14 @@ from speech.record import record_and_transcribe
 from storage.dedup import is_duplicate, load_previous_questions, save_new_questions
 from storage.save import save_qa
 
-def run_interview():
+def run_interview(user_profile=None, name=None):
     print("🤖 Welcome to your Digital Self Interview!\n")
 
     print("🔍 Loading previous questions...")
     
     seen = load_previous_questions()
 
-    questions = [q for q in generate_interview_questions() if not is_duplicate(q, seen)]
+    questions = [q for q in generate_interview_questions(seen,user_profile, name, 3) if not is_duplicate(q, seen)]
 
     save_new_questions(questions)
     

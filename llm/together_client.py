@@ -15,10 +15,24 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
-def generate_interview_questions(n=10) -> list[str]:
+def generate_interview_questions(old_questions, user_profile, name, n=10) -> list[str]:
     system_prompt = "You are an expert at designing interview questions to uncover someone's personality, values, ambitions, and deeper motivations. Avoid superficial questions. Ask questions that make the person reflect deeply."
 
-    user_prompt = f"Please generate {n} unique, deep, reflective questions to understand a person's inner world. Just return the questions as a numbered list, nothing else."
+    # add old questions to the system prompt
+    if old_questions:
+        system_prompt += f"\n\nHere are some previous questions:\n{old_questions}"
+
+    # add user profile to the system prompt
+    if user_profile:
+        system_prompt += f"\n\nHere is the user's profile:\n{user_profile}"
+
+    # add name to the system prompt
+    if name:
+        system_prompt += f"\n\nThe user's name is {name}. Use it in the questions to make them more personal."
+
+    system_prompt += "\n\nNow, please generate new questions. Make sure they are unique and not similar to the previous ones."
+    
+    user_prompt = f"Please generate {n} unique, deep, reflective questions to understand a person's inner world. The idea is that these questions can be used to train an LLM act as digital twin of this person later on. Just return the questions as a numbered list, nothing else."
 
     payload = {
         "model": MODEL,

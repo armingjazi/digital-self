@@ -9,3 +9,4 @@ __pycache__/
 temp.wav
 interview_data.jsonl
 question_history.jsonl
+profile.txt
